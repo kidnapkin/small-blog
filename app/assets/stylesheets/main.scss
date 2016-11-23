@@ -1,0 +1,67 @@
+@import "bootstrap-sprockets";
+
+// colors
+$white: #fff;
+$alizarin: #e74c3c;
+$clouds: #ecf0f1;
+
+// global scaffolding
+$body-bg: $clouds;
+
+// typography
+$font-size-base: 16px;
+
+// navbar
+$navbar-height: 80px;
+$navbar-default-bg: $alizarin;
+$navbar-default-color: $clouds;
+$navbar-default-link-color: $clouds;
+$navbar-default-link-hover-color: $clouds;
+$navbar-default-link-active-color: $clouds;
+$navbar-default-brand-color: $clouds;
+
+@import "bootstrap";
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 80px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+  padding: 120px 15px 0;
+}
+.container .text-muted {
+  margin: 20px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+.navbar-brand {
+  font-weight: 700;
+}
