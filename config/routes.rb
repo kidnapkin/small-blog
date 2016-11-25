@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  get 'posts/new'
+
+  get 'posts/index'
+
+  get 'posts/show'
+
+  get 'posts/create'
+
+  get 'posts/update'
+
+  get 'posts/destroy'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'sessions/new'
 

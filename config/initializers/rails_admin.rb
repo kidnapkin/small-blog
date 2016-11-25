@@ -1,5 +1,22 @@
 RailsAdmin.config do |config|
 
+  config.parent_controller = "::ApplicationController"
+
+  RailsAdmin.config do |config|
+    config.authorize_with do |controller|
+      redirect_to main_app.root_path unless current_user.admin?
+    end
+  end
+  #
+  RailsAdmin.config do |config|
+    config.model 'User' do
+      list do
+        field :name
+        field :created_at
+      end
+    end
+  end
+
   ### Popular gems integration
 
   ## == Devise ==
