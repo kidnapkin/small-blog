@@ -1,17 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'posts/new'
-
-  get 'posts/index'
-
-  get 'posts/show'
-
-  get 'posts/create'
-
-  get 'posts/update'
-
-  get 'posts/destroy'
-
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'sessions/new'
 
@@ -24,5 +12,9 @@ Rails.application.routes.draw do
   post      '/login',   to: 'sessions#create'
   delete    '/logout',  to: 'sessions#destroy'
 
-  resources :users
+  resources :users do
+    resources :posts do
+      resources :comments
+    end
+  end
 end
