@@ -5,8 +5,10 @@ class CommentsController < ApplicationController
     @comment = @post.comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      flash[:success] = "comment created!"
-      redirect_to root_url
+      respond_to do |format|
+        format.html { redirect_to user_post_path(@comment.user_id, @post), notice: 'comment created!' }
+        format.js
+      end
     else
       render 'pages/home'
     end

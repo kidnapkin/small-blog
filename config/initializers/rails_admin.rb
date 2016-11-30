@@ -7,7 +7,7 @@ RailsAdmin.config do |config|
       redirect_to main_app.root_path unless current_user.admin?
     end
   end
-  #
+  
   RailsAdmin.config do |config|
     config.model 'User' do
       list do

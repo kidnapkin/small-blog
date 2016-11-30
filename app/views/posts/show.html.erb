@@ -1,28 +1,26 @@
 <h1 class="text-center"><%= @post.title %></h1>
 
-<p><%= @post.content %></p>
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <%= @post.content %>
+    </div>
+</div>
 
 
 
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
     <h2>Comments: </h2>
-    <%= form_for(@comment, url: user_post_comments_path(current_user.id, @post.id)) do |f| %>
-
-
+    <%= form_for([current_user, @post, @post.comments.build], remote: true) do |f| %>
         <div class="form-group">
-          <%= f.label :content %>
           <%= f.text_area :content, class: 'form-control' %>
         </div>
 
-        <%= f.submit "Leave comment", class: "btn btn-primary" %>
+        <%= f.submit "Leave a comment", class: "btn btn-primary" %>
     <% end %>
     
-    
-    <% @comments.each do |comment| %>
-        <div class="comment">
-            <p><%= comment.content %></p>
-            <p>by <%= comment.user.name %></p>
-            <%= time_tag comment.created_at %>
-        </div>
-    <% end %>
+	<div class="comments-container">
+	    <ul id="comments-list" class="comments-list">
+			<%= render @comments %>
+        </ul>
+	</div>
 </div>

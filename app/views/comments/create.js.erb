@@ -1,0 +1,2 @@
+$('#comments-list').append('<%= j render 'comment', comment: @comment %>');
+$('#<%= dom_id(@comment) %>').hide().fadeIn(1000);
