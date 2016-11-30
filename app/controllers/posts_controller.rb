@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-
   def new
   end
 
@@ -13,7 +12,6 @@ class PostsController < ApplicationController
   end
 
   def create
-
   end
 
   def update

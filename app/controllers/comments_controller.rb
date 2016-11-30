@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
@@ -13,7 +12,7 @@ class CommentsController < ApplicationController
       render 'pages/home'
     end
   end
-  
+
   private
 
   def comment_params

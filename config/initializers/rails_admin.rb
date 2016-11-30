@@ -1,13 +1,12 @@
 RailsAdmin.config do |config|
-
-  config.parent_controller = "::ApplicationController"
+  config.parent_controller = '::ApplicationController'
 
   RailsAdmin.config do |config|
-    config.authorize_with do |controller|
+    config.authorize_with do |_controller|
       redirect_to main_app.root_path unless current_user.admin?
     end
   end
-  
+
   RailsAdmin.config do |config|
     config.model 'User' do
       list do
