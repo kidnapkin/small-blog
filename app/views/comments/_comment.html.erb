@@ -6,7 +6,6 @@
 			<span><%= time_ago_in_words(comment.created_at) %> ago</span>
 			<% if logged_in? %>
 			<i class="fa fa-reply"></i>
-			<%= link_to "Reply", new_user_post_comment_path(current_user, @post, comment, parent_id: comment.id), remote: true %>
 			<i class="fa fa-heart"></i>
 			<% end %>
 		</div>
@@ -15,7 +14,6 @@
 		</div>
 		<% if logged_in? %>
 		<div class="comment-reply">
-			<p><%= comment.id %></p>
 			<%= render 'comments/reply_form', comment: comment, parent_id: comment.id %>
 		</div>
 		<% end %>
