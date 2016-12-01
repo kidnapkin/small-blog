@@ -15,3 +15,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+    $('.fa.fa-reply').on('click', function() {
+        $(this).parents('.comment-box').find('.comment-reply').toggle(300);
+    })
+})

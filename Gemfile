@@ -7,6 +7,7 @@ gem 'font-awesome-rails', '~> 4.7'
 gem 'faker', '~> 1.6', '>= 1.6.6'
 gem 'rails_admin', '~> 1.0'
 gem 'will_paginate', '~> 3.1', '>= 3.1.5'
+gem 'ancestry', '~> 2.2', '>= 2.2.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
@@ -37,6 +38,7 @@ gem 'bcrypt', '~> 3.1.7'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  # gem 'pry-rails'
 end
 
 group :development do
