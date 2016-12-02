@@ -17,8 +17,8 @@
     <% end %>
     
 	<div class="comments-container">
-	    <ul id="comments-list" class="comments-list">
-			<%= nested_comments @comments.arrange(order: :created_at) %>
-        </ul>
+	    <div id="comments-list" class="comments-list">
+				<%= nested_comments @comments.arrange(order: :created_at) %>
+			</div>
 	</div>
 </div>

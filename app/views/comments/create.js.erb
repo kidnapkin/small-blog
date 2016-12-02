@@ -1,2 +1,10 @@
-$('#comments-list').append('<%= j render 'comment', comment: @comment, nested: '' %>');
+<% if @comment.parent %>
+  $('#<%= dom_id(@comment.parent) %>')
+      .parent()
+      .append('<%= j content_tag(:div, render('comment', comment: @comment), class: 'nested_comments') %>');
+<% else %>
+  $('#comments-list')
+      .append('<%= j render 'comment', comment: @comment %>');
+<% end %>
+
 $('#<%= dom_id(@comment) %>').hide().fadeIn(1000);
