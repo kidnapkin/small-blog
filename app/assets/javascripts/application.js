@@ -17,7 +17,7 @@
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
-    $('.fa.fa-reply').on('click', function() {
+    $(document).on('click', '.fa.fa-reply', function() {
         $(this).parents('.comment-box').find('.comment-reply').toggle(300);
     })
 })
