@@ -1,0 +1,6 @@
+var like = $('#<%= dom_id(@vote.comment) %>').find('.fa.fa-heart');
+like.addClass('active');
+var newVal = parseInt(like.text());
+newVal++;
+console.log(newVal);
+like.text(newVal);

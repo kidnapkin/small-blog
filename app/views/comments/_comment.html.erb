@@ -1,21 +1,32 @@
 <div class="comment-main-level" id="<%= dom_id(comment) %>">
-	<div class="comment-box">
-		<div class="comment-head">
-			<div class="comment-avatar"><%= gravatar_for comment.user %></div>
-			<h6 class="comment-name by-author"><%= link_to comment.user.name, user_path(comment.user.id) %></h6>
-			<span><%= time_ago_in_words(comment.created_at) %> ago</span>
-			<% if logged_in? %>
-          <i class="fa fa-reply"></i>
-          <i class="fa fa-heart"></i>
-			<% end %>
-		</div>
-		<div class="comment-content">
-			<%= comment.content %>
-		</div>
-		<% if logged_in? %>
-		<div class="comment-reply">
-			<%= render 'comments/reply_form', comment: comment, parent_id: comment.id %>
-		</div>
-		<% end %>
-	</div>
+  <div class="comment-box">
+    <div class="comment-head">
+      <div class="comment-avatar"><%= gravatar_for comment.user %></div>
+      <h6 class="comment-name by-author"><%= link_to comment.user.name, user_path(comment.user.id) %></h6>
+      <span><%= time_ago_in_words(comment.created_at) %> ago</span>
+      <% if logged_in? %>
+            <i class="fa fa-reply"></i>
+              <%= link_to voted?(comment) ? 
+                    user_comment_vote_path(	current_user, 
+                                            comment, 
+                                            Vote.find_by( user_id: current_user.id, 
+                                                          comment_id: comment.id) ) :
+                    user_comment_votes_path(current_user, comment), 
+                    method: voted?(comment) ? :delete : :post, 
+                    remote: true do %>
+          <i class="fa fa-heart <%= 'active' if voted?(comment) %>" id="<%= dom_id(comment) %>_vote">
+            <%= comment.votes.count %>
+          </i>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="comment-content">
+      <%= comment.content %>
+    </div>
+    <% if logged_in? %>
+    <div class="comment-reply">
+      <%= render 'comments/reply_form', comment: comment, parent_id: comment.id %>
+    </div>
+    <% end %>
+  </div>
 </div>
