@@ -8,6 +8,7 @@ gem 'faker', '~> 1.6', '>= 1.6.6'
 gem 'rails_admin', '~> 1.0'
 gem 'will_paginate', '~> 3.1', '>= 3.1.5'
 gem 'ancestry', '~> 2.2', '>= 2.2.2'
+gem 'annotate', '~> 2.7', '>= 2.7.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server

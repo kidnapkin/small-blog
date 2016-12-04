@@ -1,6 +1,8 @@
 class VotesController < ApplicationController
+  before_action :set_comment, except: [:destroy]
+
   def create
-    @vote = current_user.votes.build(vote_params)
+    @vote = Vote.create(vote_params)
     if @vote.save
       respond_to do |format|
         format.js
@@ -23,5 +25,9 @@ class VotesController < ApplicationController
 
   def vote_params
     params.permit(:user_id, :comment_id)
+  end
+
+  def set_comment
+    @comment = Comment.find(params[:comment_id])
   end
 end

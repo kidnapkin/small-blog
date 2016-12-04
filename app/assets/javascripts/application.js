@@ -16,8 +16,7 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).on('turbolinks:load', function() {
-    $(document).on('click', '.fa.fa-reply', function() {
-        $(this).parents('.comment-box').find('.comment-reply').toggle(300);
-    })
+$(document).on('click', '.reply-toggle', function() {
+    $(this).toggleClass('active');
+    $(this).parents('.comment-box').find('.comment-reply').toggle(500);
 })

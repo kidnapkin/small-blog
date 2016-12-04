@@ -1,6 +1,2 @@
-var like = $('#<%= dom_id(@comment) %>_vote');
-like.removeClass('active');
-var newVal = parseInt(like.text());
-newVal--;
-console.log(newVal);
-like.text(newVal);
+var like = $('#<%= dom_id(@comment) %>').find('#votes');
+like.html('<%= j render 'votes/vote', comment: @comment %>');

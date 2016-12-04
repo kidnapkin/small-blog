@@ -1,6 +1,9 @@
 module VotesHelper
   def voted?(comment)
-    voted_comment = current_user.votes.find_by(comment_id: comment.id)
-    true if voted_comment
+    comment.votes.where(user_id: current_user.id).any?
+  end
+
+  def author?(comment)
+    comment.user == @post.user
   end
 end

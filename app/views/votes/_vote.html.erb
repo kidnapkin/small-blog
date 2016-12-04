@@ -1,0 +1,14 @@
+<% unless voted?(comment) %>
+    <%= link_to user_comment_votes_path(current_user, comment), method: :post, remote: true do %>
+        <i class="fa fa-heart votes-count">
+          <%= comment.votes.count %>
+        </i>
+    <% end %>
+<% else %>
+    <%= link_to vote_path(Vote.find_by(user_id: current_user.id,
+                                       comment_id: comment.id)), method: :delete, remote: true do %>
+        <i class="fa fa-heart votes-count active">
+          <%= comment.votes.count %>
+        </i>
+    <% end %>
+<% end %>
