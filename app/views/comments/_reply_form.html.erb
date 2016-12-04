@@ -2,7 +2,7 @@
     <%= f.hidden_field :parent_id %>
   
     <div class="form-group">
-      <%= f.text_area :content, class: 'form-control' %>
+      <%= f.text_area :content, class: 'form-control', id: "comment_content_#{parent_id}" %>
     </div>
 
     <%= f.submit "Leave a comment", class: "btn btn-primary" %>
