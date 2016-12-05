@@ -1,8 +1,0 @@
-toolbar:
-  - styleselect | bold italic | undo redo
-  - image | link
-plugins:
-  - image
-  - link
-font_formats:
-  - Lora=lora,times
