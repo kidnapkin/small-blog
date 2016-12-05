@@ -1,2 +1,15 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<h1>Posts</h1>
+<%= form_for [current_user, @post] do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <div class="form-group">
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.text_area :content, class: 'form-control tinymce', rows: 20, cols: 120 %>
+      <%= tinymce theme: 'modern', plugins: ['image', 'uploadimage'] %>
+    </div>
+
+    <%= f.submit "Publish something special...", class: "btn btn-primary" %>
+<% end %>

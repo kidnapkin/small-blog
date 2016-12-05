@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   post      '/login',   to: 'sessions#create'
   delete    '/logout',  to: 'sessions#destroy'
 
+  post '/tinymce_assets', to: 'tinymce_assets#create'
+
   resources :users do
     resources :posts do
       resources :comments
