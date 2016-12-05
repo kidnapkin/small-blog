@@ -1,14 +1,19 @@
-<h1>Posts</h1>
-<%= form_for [current_user, @post] do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
-
-    <div class="form-group">
-      <%= f.text_field :title, class: 'form-control' %>
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <h1 class="text-center">Create new post</h1>
+        <%= form_for [current_user, @post] do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+      
+          <div class="form-group">
+            <%= f.text_field :title, class: 'form-control', placeholder: 'Post title' %>
+          </div>
+      
+          <div class="form-group">
+            <%= f.label :content, 'Post content' %>
+            <%= f.bootsy_area :content, class: 'form-control', rows: 20, resize: true, placeholder: 'Post content' %>
+          </div>
+      
+          <%= f.submit "Publish something special...", class: "btn btn-primary" %>
+      <% end %>
     </div>
-
-    <div class="form-group">
-      <%= f.text_area :content, class: 'form-control' %>
-    </div>
-
-    <%= f.submit "Publish something special...", class: "btn btn-primary" %>
-<% end %>
+</div>

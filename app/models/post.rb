@@ -15,6 +15,7 @@
 #
 
 class Post < ApplicationRecord
+  include Bootsy::Container
   belongs_to :user
   has_many :comments, dependent: :destroy
 
