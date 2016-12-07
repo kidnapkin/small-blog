@@ -1,11 +1,30 @@
-<h1><%= @user.name %></h1>
-<h3><%= @user.email %></h3>
-
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-4">
+    <div class="comment-avatar"><%= gravatar_for @user %></div>
+    <h1><%= @user.name %></h1>
+    <h3><%= @user.email %></h3>
+  </div>
+  <div class="col-md-8">
     <% @posts.each do |post| %>
-      <h3><%= post.title %></h3>
-      <p><%= post.content %></p>
+        <div class="post-preview">
+            <%= link_to user_post_path(@user, post) do %>
+                <h2 class="post-title">
+                    <%= post.title %>
+                </h2>
+                <h3 class="post-subtitle">
+                    <%= short_description(post, 80) %>
+                </h3>
+            <% end %>
+            <p class="post-meta">Posted on <%= time_tag post.created_at %></p>
+            <% if current_user?(@user) %>
+              <%= link_to "delete", [@user, post], method: :delete,
+                                               data: { confirm: "You sure?" }, class: 'btn btn-danger' %>
+            <% end %>
+        </div>
+        <hr>
     <% end %>
+    
+    <!-- Pager -->
+    <%= will_paginate @posts, page_links: false, previous_label: '&larr; Newer Posts', next_label: 'Older Posts &rarr;' %>
   </div>
 </div>

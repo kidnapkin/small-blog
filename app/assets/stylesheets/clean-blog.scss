@@ -1,3 +1,11 @@
+.turbolinks-progress-bar {
+  background-color: #ff00f7;
+}
+
+.navbar-text {
+  color: #fff !important;
+}
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
@@ -101,6 +109,12 @@ hr.small {
       &:focus {
         color: rgba(255, 255, 255, 0.8);
       }
+    }
+    .nav .dropdown  a {
+      color: initial;
+    }
+    .nav .dropdown .dropdown-toggle {
+      color: white;
     }
   }
 }
@@ -386,6 +400,27 @@ form .row:first-child .floating-label-form-group {
   padding: 25px 35px;
 }
 
+.form-group input,
+.form-group textarea,
+.form-control {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  border-radius: 0;
+  
+}
+
+.form-group input {
+  padding: 25px 10px;
+}
+
+.bootsy_text_area {
+  text-transform: none;
+  padding: 10px 5px !important;
+}
+
 .btn-default {
   &:hover,
   &:focus {
@@ -398,31 +433,34 @@ form .row:first-child .floating-label-form-group {
 .pagination {
   display: block;
   margin: 20px 0 0;
-  .next_page { float: right; }
-  .previous_page { float: left; }
-    a,
-    span {
-      font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      text-transform: uppercase;
-      font-size: 14px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      padding: 15px 25px;
-      background-color: white;
-      border: 1px solid #ddd;
-      border-radius: 0;
+  .next_page {
+    float: right;
+  }
+  .previous_page {
+    float: left;
+  }
+  a,
+  span {
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    padding: 15px 25px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 0;
+  }
+  a {
+    &:hover,
+    &:focus {
+      color: white;
+      background-color: #0085A1;
+      border: 1px solid #0085A1;
+      text-decoration: none;
     }
-    a {
-      &:hover,
-      &:focus {
-        color: white;
-        background-color: #0085A1;
-        border: 1px solid #0085A1;
-        text-decoration: none;
-      }
-    }
-  
-  .disabled> {
+  }
+  .disabled > {
     a {
       color: #777777;
       background-color: #333333;
@@ -443,7 +481,7 @@ form .row:first-child .floating-label-form-group {
 }
 
 ::-moz-selection,
- ::selection {
+::selection {
   color: white;
   text-shadow: none;
   background: #0085A1;

@@ -1,0 +1,5 @@
+<div class="post-heading">
+    <h1><%= post.title %></h1>
+        <h2 class="subheading"><%= short_description(post, 20) %></h2>
+    <span class="meta">Posted by <%= link_to post.user.name, user_path(post.user.id) %> on <%= time_tag post.created_at %></span>
+</div>

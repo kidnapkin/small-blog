@@ -1,4 +1,8 @@
-<h1 class="text-center"><%= @post.title %></h1>
+<% content_for :heading do %>
+  <%= render 'layouts/post_heading', post: @post %>
+<% end %>
+
+<% provide(:bg_url, @post.featured_image ) %>
 
 <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -6,19 +10,19 @@
     </div>
 </div>
 
-
-
-<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-    <% if logged_in? %>
-    <h2>Comments: </h2>
-        <%= render 'comments/form' %>
-    <% else %>
-        <%= link_to 'Log in to leave a comment', login_path, class: 'btn btn-default center-block' %>
-    <% end %>
-    
-	<div class="comments-container">
-	    <div id="comments-list" class="comments-list">
-				<%= nested_comments @comments.arrange(order: :created_at) %>
-			</div>
-	</div>
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <% if logged_in? %>
+        <h2>Comments: </h2>
+            <%= render 'comments/form' %>
+        <% else %>
+            <%= link_to 'Log in to leave a comment', login_path, class: 'btn btn-default center-block' %>
+        <% end %>
+        
+    	<div class="comments-container">
+    	    <div id="comments-list" class="comments-list">
+    				<%= nested_comments @comments.arrange(order: :created_at) %>
+    			</div>
+    	</div>
+    </div>
 </div>

@@ -1,55 +1,10 @@
-<!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header page-scroll">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        Menu <i class="fa fa-bars"></i>
-      </button>
-      <%= link_to 'Small Blog', root_path, class: 'navbar-brand' %>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="<%= 'active' if current_page?(about_path) %>"><%= link_to 'About', about_path %></li>
-        <li class="<%= 'active' if current_page?(contact_path) %>"><%= link_to 'Contacts', contact_path %></li>
-        <% if logged_in? %>
-            <li>
-              <p class="navbar-text">Signed in as <%= link_to current_user.name, current_user %></p>
-            </li>
-            <li>
-              <%= link_to 'New Post', new_user_post_path(current_user) %>
-            </li>
-            <li>
-              <%= link_to "Log out", logout_path, method: "delete" %>
-            </li>
-        <% else %>
-            <li class="<%= 'active' if current_page?(login_path) %>">
-              <%= link_to 'Log In', login_path %>
-            </li>
-            <li class="<%= 'active' if current_page?(signup_path) %>">
-              <%= link_to 'Sign Up', signup_path %>
-            </li>
-        <% end %>
-      </ul>
-    </div>
-    <!-- /.navbar-collapse -->
-  </div>
-  <!-- /.container -->
-</nav>
-
 <!-- Page Header -->
 <!-- Set your background image for this header on the line below. -->
-<header class="intro-header" style="background-image: url('https://blackrockdigital.github.io/startbootstrap-clean-blog/img/home-bg.jpg')">
+<header class="intro-header" style="background-image: url(<%= set_image(yield(:bg_url)) %>)">
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="site-heading">
-          <h1>Small Blog</h1>
-          <hr class="small">
-          <span class="subheading">A Small Rails Blog</span>
+          <%= yield :heading %>
         </div>
       </div>
     </div>

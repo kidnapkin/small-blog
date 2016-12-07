@@ -1,0 +1,4 @@
+<% content_for :content do %>
+  <%= content_for?(:posts_content) ? yield(:posts_content) : yield %>
+<% end %>
+<%= render template: "layouts/application" %>

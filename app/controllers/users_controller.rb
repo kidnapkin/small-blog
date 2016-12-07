@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    render layout: 'pages'
   end
 
   def create
@@ -19,7 +20,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.all
+    @posts = @user.posts.order(created_at: :desc).paginate(page: params[:page])
+    render layout: 'pages'
   end
 
   def update

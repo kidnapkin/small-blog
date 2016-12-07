@@ -1,3 +1,5 @@
+<% provide(:page_heading, "Small Blog") %>
+
 <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <% @posts.each do |post| %>
@@ -7,8 +9,7 @@
                         <%= post.title %>
                     </h2>
                     <h3 class="post-subtitle">
-                        <%= truncate(strip_tags(post.content), length: 150) %>
-                        
+                        <%= short_description(post, 150) %>
                     </h3>
                 <% end %>
                 <p class="post-meta">Posted by <%= link_to post.user.name, user_path(post.user.id) %> on <%= time_tag post.created_at %></p>

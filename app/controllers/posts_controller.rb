@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    render layout: 'pages'
   end
 
   def index
@@ -32,19 +33,19 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @micropost.destroy
-    flash[:success] = "Micropost deleted"
+    @post.destroy
+    flash[:success] = "Post deleted"
     redirect_to request.referrer || root_url
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :bootsy_image_gallery_id)
+    params.require(:post).permit(:title, :content, :bootsy_image_gallery_id, :featured_image)
   end
 
   def correct_user
-    @post = current_user.microposts.find_by(id: params[:id])
+    @post = current_user.posts.find_by(id: params[:id])
     redirect_to root_url if @post.nil?
   end
 end
