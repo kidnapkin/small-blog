@@ -19,7 +19,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      flash[:success] = "Post created!"
+      flash[:success] = 'Post created!'
       redirect_to root_url
     else
       render 'pages/home'
@@ -30,12 +30,9 @@ class PostsController < ApplicationController
   end
 
   def destroy
-  end
-
-  def destroy
     @post.destroy
-    flash[:success] = "Post deleted"
-    redirect_to request.referrer || root_url
+    flash[:success] = 'Post deleted'
+    redirect_to request.referer || root_url
   end
 
   private

@@ -1,14 +1,13 @@
 require 'test_helper'
 
 class VotesControllerTest < ActionDispatch::IntegrationTest
-  test "should get create," do
-    get votes_create,_url
+  test 'should get create,' do
+    get votes_create, params: _url
     assert_response :success
   end
 
-  test "should get update" do
+  test 'should get update' do
     get votes_update_url
     assert_response :success
   end
-
 end

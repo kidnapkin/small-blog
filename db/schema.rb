@@ -10,64 +10,62 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161208000138) do
-
-  create_table "bootsy_image_galleries", force: :cascade do |t|
-    t.string   "bootsy_resource_type"
-    t.integer  "bootsy_resource_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+ActiveRecord::Schema.define(version: 20_161_208_000_138) do
+  create_table 'bootsy_image_galleries', force: :cascade do |t|
+    t.string   'bootsy_resource_type'
+    t.integer  'bootsy_resource_id'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
   end
 
-  create_table "bootsy_images", force: :cascade do |t|
-    t.string   "image_file"
-    t.integer  "image_gallery_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table 'bootsy_images', force: :cascade do |t|
+    t.string   'image_file'
+    t.integer  'image_gallery_id'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.text     "content"
-    t.integer  "user_id"
-    t.integer  "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "ancestry"
-    t.index ["ancestry"], name: "index_comments_on_ancestry"
-    t.index ["post_id"], name: "index_comments_on_post_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
+  create_table 'comments', force: :cascade do |t|
+    t.text     'content'
+    t.integer  'user_id'
+    t.integer  'post_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string   'ancestry'
+    t.index ['ancestry'], name: 'index_comments_on_ancestry'
+    t.index ['post_id'], name: 'index_comments_on_post_id'
+    t.index ['user_id'], name: 'index_comments_on_user_id'
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.string   "title"
-    t.text     "content"
-    t.integer  "user_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.string   "featured_image"
-    t.string   "slug"
-    t.index ["slug"], name: "index_posts_on_slug"
-    t.index ["user_id"], name: "index_posts_on_user_id"
+  create_table 'posts', force: :cascade do |t|
+    t.string   'title'
+    t.text     'content'
+    t.integer  'user_id'
+    t.datetime 'created_at',     null: false
+    t.datetime 'updated_at',     null: false
+    t.string   'featured_image'
+    t.string   'slug'
+    t.index ['slug'], name: 'index_posts_on_slug'
+    t.index ['user_id'], name: 'index_posts_on_user_id'
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.boolean  "admin",           default: false
-    t.string   "slug"
-    t.index ["slug"], name: "index_users_on_slug"
+  create_table 'users', force: :cascade do |t|
+    t.string   'name'
+    t.string   'email'
+    t.string   'password_digest'
+    t.datetime 'created_at',                      null: false
+    t.datetime 'updated_at',                      null: false
+    t.boolean  'admin', default: false
+    t.string   'slug'
+    t.index ['slug'], name: 'index_users_on_slug'
   end
 
-  create_table "votes", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "comment_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["comment_id"], name: "index_votes_on_comment_id"
-    t.index ["user_id"], name: "index_votes_on_user_id"
+  create_table 'votes', force: :cascade do |t|
+    t.integer  'user_id'
+    t.integer  'comment_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['comment_id'], name: 'index_votes_on_comment_id'
+    t.index ['user_id'], name: 'index_votes_on_user_id'
   end
-
 end

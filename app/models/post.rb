@@ -20,21 +20,19 @@
 class Post < ApplicationRecord
   include FriendlyId
   include Bootsy::Container
-  
+
   friendly_id :title, use: [:slugged, :finders]
   mount_uploader :featured_image, FeaturedImageUploader
-  
+
   belongs_to :user
   has_many :comments, dependent: :destroy
   validates :user_id, presence: true
   validates :title, presence: true
   validates :content, presence: true
   validate  :featured_image_size
-  
+
   def featured_image_size
-    if featured_image.size > 5.megabytes
-      errors.add(:featured_image, "should be less than 5MB")
-    end
+    errors.add(:featured_image, 'should be less than 5MB') if featured_image.size > 5.megabytes
   end
 
   self.per_page = 10

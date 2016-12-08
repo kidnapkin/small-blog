@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def set_heading(heading = '')
+  def page_heading(heading = '')
     base_heading = 'Small Blog'
     if heading.empty?
       base_heading
@@ -8,7 +8,7 @@ module ApplicationHelper
     end
   end
 
-  def set_subheading(sub_heading = '')
+  def page_subheading(sub_heading = '')
     base_subheading = 'A Small Rails Blog'
     if sub_heading.empty?
       base_subheading
@@ -16,8 +16,8 @@ module ApplicationHelper
       sub_heading
     end
   end
-  
-  def set_image(image = '')
+
+  def page_image(image = '')
     base_image = 'http://loremflickr.com/1600/800'
     if image.empty?
       base_image

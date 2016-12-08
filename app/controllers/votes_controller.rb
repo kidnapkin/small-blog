@@ -20,7 +20,7 @@ class VotesController < ApplicationController
       format.js
     end
   end
-  
+
   private
 
   def vote_params

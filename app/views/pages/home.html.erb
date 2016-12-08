@@ -12,7 +12,7 @@
                         <%= short_description(post, 150) %>
                     </h3>
                 <% end %>
-                <p class="post-meta">Posted by <%= link_to post.user.name, user_path(post.user.id) %> on <%= time_tag post.created_at %></p>
+                <p class="post-meta">Posted by <%= link_to post.user.name, user_path(post.user) %> on <%= time_tag post.created_at %></p>
             </div>
             <hr>
         <% end %>
