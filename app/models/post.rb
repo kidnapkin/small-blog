@@ -9,18 +9,23 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  featured_image :string
+#  slug           :string
 #
 # Indexes
 #
+#  index_posts_on_slug     (slug)
 #  index_posts_on_user_id  (user_id)
 #
 
 class Post < ApplicationRecord
+  include FriendlyId
   include Bootsy::Container
-  belongs_to :user
-  has_many :comments, dependent: :destroy
+  
+  friendly_id :title, use: [:slugged, :finders]
   mount_uploader :featured_image, FeaturedImageUploader
   
+  belongs_to :user
+  has_many :comments, dependent: :destroy
   validates :user_id, presence: true
   validates :title, presence: true
   validates :content, presence: true
