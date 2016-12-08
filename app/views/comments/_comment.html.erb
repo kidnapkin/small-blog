@@ -18,7 +18,7 @@
     </div>
     <% if logged_in? %>
         <div class="comment-reply">
-          <%= render 'comments/reply_form', post: @post, comment: comment, parent_id: comment.id %>
+          <%= render 'comments/form', post: @post, comment: comment, parent_id: comment.id if comment.id %>
         </div>
     <% end %>
   </div>

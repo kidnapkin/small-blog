@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = 'Signed Up successfully!'
+      log_in @user
       redirect_to @user
     else
       render 'new'
@@ -41,10 +42,9 @@ class UsersController < ApplicationController
   end
 
   def logged_in_user
-    unless logged_in?
-      flash[:danger] = 'Please log in.'
-      redirect_to login_url
-    end
+    return if logged_in?
+    flash[:danger] = 'Please log in.'
+    redirect_to login_url
   end
 
   def correct_user

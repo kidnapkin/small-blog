@@ -1,9 +1,8 @@
 class VotesController < ApplicationController
   before_action :set_comment, except: [:destroy]
-  before_action :correct_user, only: [:create]
 
   def create
-    @vote = Vote.create(vote_params)
+    @vote = current_user.votes.create(vote_params)
     if @vote.save
       respond_to do |format|
         format.js
@@ -25,19 +24,10 @@ class VotesController < ApplicationController
   private
 
   def vote_params
-    params.permit(:user_id, :comment_id)
+    params.permit(:comment_id)
   end
 
   def set_comment
     @comment = Comment.find(params[:comment_id])
-  end
-
-  def correct_user
-    @user = User.find(params[:user_id])
-    unless current_user?(@user)
-      respond_to do |format|
-        format.js { render text: "alert('Not allowed');" }
-      end
-    end
   end
 end
