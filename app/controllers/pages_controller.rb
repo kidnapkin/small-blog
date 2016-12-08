@@ -3,9 +3,6 @@ class PagesController < ApplicationController
     @posts = Post.order(created_at: :desc).paginate(page: params[:page])
   end
 
-  def help
-  end
-
   def about
   end
 

@@ -36,4 +36,6 @@ class Post < ApplicationRecord
   end
 
   self.per_page = 10
+
+  delegate :id, :name, :email, to: :user, prefix: true
 end

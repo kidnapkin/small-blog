@@ -22,4 +22,6 @@ class Comment < ApplicationRecord
   belongs_to :post
   has_many   :votes, dependent: :destroy
   has_ancestry
+
+  delegate :id, :name, :email, to: :user, prefix: true
 end

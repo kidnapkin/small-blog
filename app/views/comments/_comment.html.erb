@@ -2,7 +2,7 @@
   <div class="comment-box">
     <div class="comment-head">
       <div class="comment-avatar"><%= gravatar_for comment.user %></div>
-      <h6 class="comment-name <%= 'by-author' if author?(comment) %>"><%= link_to comment.user.name, user_path(comment.user.id) %></h6>
+      <h6 class="comment-name <%= 'by-author' if author?(comment) %>"><%= link_to comment.user_name, user_path(comment.user_id) %></h6>
       <span class="comment-created-ago"><%= time_ago_in_words(comment.created_at) %> ago</span>
       <% if logged_in? %>
           <span id="reply-toggle">
@@ -18,7 +18,7 @@
     </div>
     <% if logged_in? %>
         <div class="comment-reply">
-          <%= render 'comments/reply_form', comment: comment, parent_id: comment.id %>
+          <%= render 'comments/reply_form', post: @post, comment: comment, parent_id: comment.id %>
         </div>
     <% end %>
   </div>
