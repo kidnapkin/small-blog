@@ -6,7 +6,7 @@
 <% else %>
   $('#comments-list')
       .append('<%= j render 'comment', comment: @comment %>');
-  $('#comment_content').val('');
+  $('#comment_content_').val('');
 <% end %>
 
 $('#<%= dom_id(@comment) %>').hide().fadeIn(1000);
